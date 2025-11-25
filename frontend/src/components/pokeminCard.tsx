@@ -109,94 +109,93 @@ const PokemonCard = () => {
         <div className={`min-h-screen w-full ${bgGradient} flex items-center justify-center p-4 md:p-8 transition-colors duration-700`}>
 
             {data && (
-                <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl shadow-2xl w-full max-w-4xl overflow-hidden flex flex-col md:grid md:grid-cols-2 md:min-h-[500px]">
+                <div>
+                    <button
+                        onClick={() => navigate(-1)}
+                        className="text-slate-100 mb-3 drop-shadow-2xl hover:text-gray-900 text-xl md:text-2xl font-semibold transition-colors flex items-center gap-2"
+                    >
+                        ← Back to Search
+                    </button>
+                    <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl shadow-2xl w-full max-w-4xl overflow-hidden flex flex-col md:grid md:grid-cols-2 md:min-h-[500px]">
 
-                    <div className={`relative flex flex-col items-center justify-center p-6 md:p-10 ${bgGradient} md:bg-transparent`}>
-                        <div className='absolute top-6 left-6 text-white/90 text-2xl md:text-3xl drop-shadow-md font-extrabold'>
-                            #{String(data.id).padStart(3, '0')}
-                        </div>
-
-                        <div className="absolute w-48 h-48 md:w-64 md:h-64 bg-white opacity-20 rounded-full blur-3xl"></div>
-
-                        <div className="relative z-10 text-center mt-8 md:mt-0">
-                            <img
-                                src={imageUrl}
-                                alt={data.name}
-                                className="w-40 h-40 md:w-64 md:h-64 object-contain drop-shadow-2xl hover:scale-110 transition-transform duration-500 relative z-20 mx-auto"
-                            />
-
-                            <h1 className="text-3xl md:text-5xl font-black text-white mt-4 capitalize drop-shadow-md">
-                                {data.name}
-                            </h1>
-
-                            <div className="flex gap-2 justify-center mt-4 flex-wrap">
-                                {data.types.map((t) => (
-                                    <span
-                                        key={t.type.name}
-                                        className="px-3 py-1 md:px-4 md:py-1.5 text-xs md:text-sm font-bold text-gray-800 bg-white/90 rounded-full shadow-sm uppercase tracking-wider"
-                                    >
-                                        {t.type.name}
-                                    </span>
-                                ))}
+                        <div className={`relative flex flex-col items-center justify-center p-6 md:p-10 ${bgGradient} md:bg-transparent`}>
+                            <div className='absolute top-6 left-6 text-white/90 text-2xl md:text-3xl drop-shadow-md font-extrabold'>
+                                #{String(data.id).padStart(3, '0')}
                             </div>
-                        </div>
-                    </div>
 
-                    <div className="flex flex-col justify-center bg-white/90 md:bg-white/95 backdrop-blur-sm p-6 md:p-10">
+                            <div className="absolute w-48 h-48 md:w-64 md:h-64 bg-white opacity-20 rounded-full blur-3xl"></div>
 
-                        <div className="mb-6">
-                            <h3 className="text-gray-600 font-bold uppercase tracking-widest text-xs md:text-sm mb-4">
-                                Physical Stats
-                            </h3>
-                            <div className="grid grid-cols-2 gap-4">
-                                <div className="p-3 md:p-4 bg-gray-50 rounded-2xl border border-gray-200/50 shadow-sm">
-                                    <p className="text-gray-500 text-[10px] md:text-xs font-bold uppercase mb-1">Height</p>
-                                    <p className="text-xl md:text-2xl font-bold text-gray-800">{(data.height / 10).toFixed(1)} <span className="text-sm md:text-base font-medium text-gray-500">m</span></p>
-                                </div>
-                                <div className="p-3 md:p-4 bg-gray-50 rounded-2xl border border-gray-200/50 shadow-sm">
-                                    <p className="text-gray-500 text-[10px] md:text-xs font-bold uppercase mb-1">Weight</p>
-                                    <p className="text-xl md:text-2xl font-bold text-gray-800">{(data.weight / 10).toFixed(1)} <span className="text-sm md:text-base font-medium text-gray-500">kg</span></p>
-                                </div>
-                            </div>
-                        </div>
+                            <div className="relative z-10 text-center mt-8 md:mt-0">
+                                <img
+                                    src={imageUrl}
+                                    alt={data.name}
+                                    className="w-40 h-40 md:w-64 md:h-64 object-contain drop-shadow-2xl hover:scale-110 transition-transform duration-500 relative z-20 mx-auto"
+                                />
 
-                        <div className="mb-6">
-                            <h3 className="text-gray-600 font-bold uppercase tracking-widest text-xs md:text-sm mb-3">
-                                Moves
-                            </h3>
-                            <div className="flex flex-wrap gap-2 max-h-24 overflow-y-auto pr-2 custom-scrollbar">
-                                {data.moves && data.moves.length > 0 ? (
-                                    data.moves.map((m, index) => (
+                                <h1 className="text-3xl md:text-5xl font-black text-white mt-4 capitalize drop-shadow-md">
+                                    {data.name}
+                                </h1>
+
+                                <div className="flex gap-2 justify-center mt-4 flex-wrap">
+                                    {data.types.map((t) => (
                                         <span
-                                            key={index}
-                                            className="px-3 py-1 bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs font-semibold rounded-lg capitalize transition-colors cursor-default border border-gray-200"
+                                            key={t.type.name}
+                                            className="px-3 py-1 md:px-4 md:py-1.5 text-xs md:text-sm font-bold text-gray-800 bg-white/90 rounded-full shadow-sm uppercase tracking-wider"
                                         >
-                                            {m.move.name}
+                                            {t.type.name}
                                         </span>
-                                    ))
-                                ) : (
-                                    <span className="text-sm text-gray-400 italic">No moves available</span>
-                                )}
+                                    ))}
+                                </div>
                             </div>
                         </div>
 
-                        <div className="mb-6 md:mb-0">
-                            <h3 className="text-gray-600 font-bold uppercase tracking-widest text-xs md:text-sm mb-2">
-                                About
-                            </h3>
-                            <p className="text-gray-600 leading-relaxed font-medium text-sm md:text-base">
-                                This is a <span className="capitalize">{data.types.map(t => t.type.name).join(' and ')}</span> type Pokemon.
-                                It is indexed as <span className="font-bold">#{data.id}</span> in the National Pokedex.
-                            </p>
-                        </div>
+                        <div className="flex flex-col justify-center bg-white/90 md:bg-white/95 backdrop-blur-sm p-6 md:p-10">
 
-                        <div className="mt-auto pt-4 md:pt-8 border-t border-gray-100 md:border-none">
-                            <button
-                                onClick={() => navigate(-1)}
-                                className="text-gray-500 hover:text-gray-900 font-semibold text-sm transition-colors flex items-center gap-2"
-                            >
-                                ← Back to Search
-                            </button>
+                            <div className="mb-6">
+                                <h3 className="text-gray-600 font-bold uppercase tracking-widest text-xs md:text-sm mb-4">
+                                    Physical Stats
+                                </h3>
+                                <div className="grid grid-cols-2 gap-4">
+                                    <div className="p-3 md:p-4 bg-gray-50 rounded-2xl border border-gray-200/50 shadow-sm">
+                                        <p className="text-gray-500 text-[10px] md:text-xs font-bold uppercase mb-1">Height</p>
+                                        <p className="text-xl md:text-2xl font-bold text-gray-800">{(data.height / 10).toFixed(1)} <span className="text-sm md:text-base font-medium text-gray-500">m</span></p>
+                                    </div>
+                                    <div className="p-3 md:p-4 bg-gray-50 rounded-2xl border border-gray-200/50 shadow-sm">
+                                        <p className="text-gray-500 text-[10px] md:text-xs font-bold uppercase mb-1">Weight</p>
+                                        <p className="text-xl md:text-2xl font-bold text-gray-800">{(data.weight / 10).toFixed(1)} <span className="text-sm md:text-base font-medium text-gray-500">kg</span></p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="mb-6">
+                                <h3 className="text-gray-600 font-bold uppercase tracking-widest text-xs md:text-sm mb-3">
+                                    Moves
+                                </h3>
+                                <div className="flex flex-wrap gap-2 max-h-24 overflow-y-auto pr-2 custom-scrollbar">
+                                    {data.moves && data.moves.length > 0 ? (
+                                        data.moves.map((m, index) => (
+                                            <span
+                                                key={index}
+                                                className="px-3 py-1 bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs font-semibold rounded-lg capitalize transition-colors cursor-default border border-gray-200"
+                                            >
+                                                {m.move.name}
+                                            </span>
+                                        ))
+                                    ) : (
+                                        <span className="text-sm text-gray-400 italic">No moves available</span>
+                                    )}
+                                </div>
+                            </div>
+
+                            <div className="mb-6 md:mb-0">
+                                <h3 className="text-gray-600 font-bold uppercase tracking-widest text-xs md:text-sm mb-2">
+                                    About
+                                </h3>
+                                <p className="text-gray-600 leading-relaxed font-medium text-sm md:text-base">
+                                    This is a <span className="capitalize">{data.types.map(t => t.type.name).join(' and ')}</span> type Pokemon.
+                                    It is indexed as <span className="font-bold">#{data.id}</span> in the National Pokedex.
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
