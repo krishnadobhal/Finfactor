@@ -14,7 +14,7 @@ public class PokemonService {
     }
 
     @Cacheable(value = "pokemon", key = "#name")
-    public SinglePokemonResponse GetSinglePokemon(String name){
+    public SinglePokemonResponse getSinglePokemon(String name){
         return webClient.get()
                 .uri("https://pokeapi.co/api/v2/pokemon/"+name)
                 .retrieve()

@@ -1,5 +1,5 @@
 import './App.css'
-import PokemonCard from './components/pokeminCard';
+import PokemonCard from './components/pokemonCard';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import PokemonSearchRedirect from './components/search';
 

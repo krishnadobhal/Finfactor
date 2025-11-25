@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/pokemon")
 @CrossOrigin(origins = "*")
-public class controller {
+public class PokemonController {
     public final PokemonService pokemonService;
 
-    public controller(PokemonService pokemonService) {
+    public PokemonController(PokemonService pokemonService) {
         this.pokemonService = pokemonService;
     }
 
@@ -26,7 +26,7 @@ public class controller {
     public ResponseEntity<SinglePokemonDto> getPokemonByName(@PathVariable String name) {
         System.out.println(name);
         try {
-            SinglePokemonResponse response = pokemonService.GetSinglePokemon(name);
+            SinglePokemonResponse response = pokemonService.getSinglePokemon(name);
             SinglePokemonDto responseToSend= SinglePokemonDto.builder().singlePokemonResponse(response).success(true).message("success").build();
             if (response == null) return ResponseEntity.notFound().build();
             return ResponseEntity.ok(responseToSend);
