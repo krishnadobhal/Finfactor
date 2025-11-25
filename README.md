@@ -26,6 +26,13 @@ Make sure you have the following installed:
 
 ---
 
+<img width="1867" height="893" alt="image" src="https://github.com/user-attachments/assets/2d706755-3501-4e12-8c58-b2ca5ae485eb" />
+
+<img width="1866" height="894" alt="image" src="https://github.com/user-attachments/assets/74f35932-77fa-45a0-b285-1b693d907199" />
+
+
+
+
 ##  Getting Started
 
 ### 1. Configure Redis
